@@ -4,10 +4,17 @@ import models
 import datetime
 import uuid
 
+
 class BaseModel():
-
+    """
+    This Class represents the BaseModel of the AirBnB project
+    """
     def __init__(self, *args, **kwargs):
-
+        """Initialize a new BaseModel
+        Args:
+            *args (Tuple)
+            **kwargs (dict)
+        """
         if (kwargs):
             for argkey, argval in kwargs.items():
                 if argkey != '__class__':
@@ -20,12 +27,18 @@ class BaseModel():
             self.updated_at = datetime.datetime.now()
 
     def __str__(self):
+        """
+        Return the print/str representation 
+        of the BaseModel instance
+        """
         return ("[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__))
 
     def save(self):
+        """Update updated_at with the current datetime."""
         self.updated_at = datetime.datetime.now()
 
     def to_dict(self):
+        """Return the dictionary of the BaseModel instance."""
         self.created_at = self.created_at.isoformat()
         self.updated_at = self.updated_at.isoformat()
         return self.__dict__
