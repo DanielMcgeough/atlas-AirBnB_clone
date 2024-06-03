@@ -101,3 +101,21 @@ class HBNBCommand(cmd.Cmd):
             print(eval(arg1[0])().id)
             storage.save()
         
+        def do_show(self, arg):
+            """
+            Display the string of a class instance
+            of an id provided.
+            """
+            arg1 = parse(arg)
+            objdict = storage.all()
+            if len(arg1) == 0:
+                print("** class name missing **")
+            elif arg1[0] not in HBNBCommand.__classes:
+                print("** class doesn't exist")
+            elif len(arg1) == 1:
+                print("** instance id missing **")
+            elif "{}.{}".format(arg1[0], arg1[1]) not in objdict:
+                print ("** no instance found **")
+            else:
+                print(objdict["{}.{}".format(arg1[0], arg1[1])])
+        
