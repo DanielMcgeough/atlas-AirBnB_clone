@@ -119,3 +119,22 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print(objdict["{}.{}".format(arg1[0], arg1[1])])
         
+        def do_destroy(self, arg):
+            """
+            Delete a class after an id
+            of an instace is provided
+            """
+            arg1 = parse(arg)
+            objdict = storage.all()
+            if len(arg1) == 0:
+                print("** class name missing **")
+            elif arg1[0] not in HBNBCommand.__classes:
+                print("** class doesn't exist")
+            elif len(arg1) == 1:
+                print("** instance id missing")
+            elif "{}.{}".format(arg1[0], arg1[1]) not in objdict.keys():
+                print("** no instance found")
+            else:
+                del objdict["{}.{}".format(arg1[0], arg1[1])]
+                storage.save()
+        
