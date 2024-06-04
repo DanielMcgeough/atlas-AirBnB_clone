@@ -156,37 +156,39 @@ class HBNBCommand(cmd.Cmd):
                         obj1.append(obj.__str__())
                 print(obj1)
 
-        def do_update
-            """
-            update classes, ids or attribute names
-            """
-            arg1 = parse(arg)
-            objdict = storage.all()
+    def do_update(self, arg):
+        """Usage: update <class> <id> <attribute_name> <attribute_value> or
+       <class>.update(<id>, <attribute_name>, <attribute_value>) or
+       <class>.update(<id>, <dictionary>)
+        Update a class instance of a given id by adding or updating
+        a given attribute key/value pair or dictionary."""
+        argl = parse(arg)
+        objdict = storage.all()
 
-            if len(arg1) == 0:
-                print("** class name is missing **")
+        if len(argl) == 0:
+            print("** class name missing **")
+            return False
+        if argl[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
+            return False
+        if len(argl) == 1:
+            print("** instance id missing **")
+            return False
+        if "{}.{}".format(argl[0], argl[1]) not in objdict.keys():
+            print("** no instance found **")
+            return False
+        if len(argl) == 2:
+            print("** attribute name missing **")
+            return False
+        if len(argl) == 3:
+            try:
+                type(eval(argl[2])) != dict
+            except NameError:
+                print("** value missing **")
                 return False
-            if arg1[0] not in HBNBCommand.__classes:
-                print("** class doesn't exist")
-                return False
-            if len(arg1) == 1:
-                print("** instance is missing **")
-                return False
-            if "{}.{}".format(arg1[0], arg1[1]) not in objdict.keys():
-                print("** no instace found **")
-                return False
-            if len(arg1) == 2:
-                print("** attribute name missing **")
-                return False
-            if len(arg1) == 3:
-                try:
-                    type(eval(arge[2])) != dict
-                except NameError:
-                    print("** value missing **")
-                    return False
 
-        if len(arg1) == 4:
-             obj = objdict["{}.{}".format(argl[0], argl[1])]
+        if len(argl) == 4:
+            obj = objdict["{}.{}".format(argl[0], argl[1])]
             if argl[2] in obj.__class__.__dict__.keys():
                 valtype = type(obj.__class__.__dict__[argl[2]])
                 obj.__dict__[argl[2]] = valtype(argl[3])
