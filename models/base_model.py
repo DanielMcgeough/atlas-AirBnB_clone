@@ -28,17 +28,20 @@ class BaseModel():
 
     def __str__(self):
         """
-        Return the print/str representation 
+        Return the print/str
+        representation
         of the BaseModel instance
         """
         return ("[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__))
 
     def save(self):
-        """Update updated_at with the current datetime."""
+        """Update updated_at with
+        the current datetime."""
         self.updated_at = datetime.datetime.now()
 
     def to_dict(self):
-        """Return the dictionary of the BaseModel instance."""
+        """Return the dictionary of
+        the BaseModel instance."""
         self.created_at = self.created_at.isoformat()
         self.updated_at = self.updated_at.isoformat()
         return self.__dict__
