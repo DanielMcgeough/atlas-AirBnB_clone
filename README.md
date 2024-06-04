@@ -2,15 +2,17 @@
 ## atlas-AirBnB_clone- A basically functional clone of the AirBnB program.
 ## Description
 This is the first part of a many part project that will span all of the second trimester with the end goal of creating
-a functional approximation of an AirBnB website. This first piece involves laying the groundwork for much of what is
+a functional approximation of an AirBnB website.<br>
+This first piece involves laying the groundwork for much of what is
 going to come later. Currently, the backend is where most of the work is happening. 
 Every component of the website whether it is a user or an amenity or a location will be an 
 instance of a class that has been setup here in the backend. Since Python is built on the relationship
-between objects and how they interact with each other, we need to build a system that can handle objects.
+between objects and how they interact with each other, we need to build a system that can handle objects.<br>
 One of the most important pieces of this back end project is the console that will allow us as developers to interact with the various objects by providing a command line interface for us so that we can test and make sure that the objects that we have created and the instances of these classes work correctly and allow us to create, update, read or delete data that is contained
-within each object. We also are constructing a means to transfer and move data between different machines by converting objects
+within each object.<br>
+We also are constructing a means to transfer and move data between different machines by converting objects
 into serialized JSON formatted strings. This will allow the application that we are creating to be able to share data across various machines and operating systems in a quick and easy way. JSON formatted strings are the corner of web applications
-and since that is part of what we are creating it is essential for our project. 
+and since that is part of what we are creating it is essential for our project.<br> 
 The last piece of our project is storage. After we have convereted our objects into JSON formatted strings we need to be able to
 have a place to store them so that they can be retrieved when they need to be changed, updated, deleted or read. That is where
 the FileStorage comes into play. It will be a location to store all data relevant to the project and be able to handle
