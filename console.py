@@ -137,4 +137,23 @@ class HBNBCommand(cmd.Cmd):
             else:
                 del objdict["{}.{}".format(arg1[0], arg1[1])]
                 storage.save()
-        
+
+        def do_all(self, arg):
+            """
+            Display all instances of a given
+            class or all objects if no class is
+            given.
+            """
+            arg1 = parse(arg)
+            if len(arg1) > 0 and arg1[0] not in HBNBCommand.__classes:
+                print("** class doesn't exist")
+            else:
+                obj1 = []
+                for obj in storage.all().values():
+                    if len(arg1) > 0 and arg1[0] == obj.__class.__name__:
+                        obj1.append(obj.__str__())
+                    elif len(arg1) == 0:
+                        obj1.append(obj.__str__())
+                print(obj1)
+
+        def do_count
