@@ -7,7 +7,8 @@ import uuid
 
 class BaseModel():
     """
-    This Class represents the BaseModel of the AirBnB project
+    This Class represents the BaseModel
+    of the AirBnB project
     """
     def __init__(self, *args, **kwargs):
         """Initialize a new BaseModel
@@ -32,7 +33,8 @@ class BaseModel():
         representation
         of the BaseModel instance
         """
-        return ("[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__))
+        return ("[{}] ({}) {}".format
+        (self.__class__.__name__, self.id, self.__dict__))
 
     def save(self):
         """Update updated_at with
