@@ -90,7 +90,6 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, arg):
         """
         Creates a new class instance
-        and prints its id.
         """
         arg1 = parse(arg)
         if len(arg1) == 0:
@@ -104,7 +103,6 @@ class HBNBCommand(cmd.Cmd):
         def do_show(self, arg):
             """
             Display the string of a class instance
-            of an id provided.
             """
             arg1 = parse(arg)
             objdict = storage.all()
@@ -121,8 +119,7 @@ class HBNBCommand(cmd.Cmd):
         
         def do_destroy(self, arg):
             """
-            Delete a class after an id
-            of an instace is provided
+            Delete a class
             """
             arg1 = parse(arg)
             objdict = storage.all()
@@ -140,9 +137,7 @@ class HBNBCommand(cmd.Cmd):
 
         def do_all(self, arg):
             """
-            Display all instances of a given
-            class or all objects if no class is
-            given.
+            Display all instances of a class
             """
             arg1 = parse(arg)
             if len(arg1) > 0 and arg1[0] not in HBNBCommand.__classes:
@@ -157,11 +152,9 @@ class HBNBCommand(cmd.Cmd):
                 print(obj1)
 
     def do_update(self, arg):
-        """Usage: update <class> <id> <attribute_name> <attribute_value> or
-       <class>.update(<id>, <attribute_name>, <attribute_value>) or
-       <class>.update(<id>, <dictionary>)
-        Update a class instance of a given id by adding or updating
-        a given attribute key/value pair or dictionary."""
+        """
+        Update a class instance
+        """
         argl = parse(arg)
         objdict = storage.all()
 
