@@ -156,4 +156,53 @@ class HBNBCommand(cmd.Cmd):
                         obj1.append(obj.__str__())
                 print(obj1)
 
-        def do_count
+        def do_update
+            """
+            update classes, ids or attribute names
+            """
+            arg1 = parse(arg)
+            objdict = storage.all()
+
+            if len(arg1) == 0:
+                print("** class name is missing **")
+                return False
+            if arg1[0] not in HBNBCommand.__classes:
+                print("** class doesn't exist")
+                return False
+            if len(arg1) == 1:
+                print("** instance is missing **")
+                return False
+            if "{}.{}".format(arg1[0], arg1[1]) not in objdict.keys():
+                print("** no instace found **")
+                return False
+            if len(arg1) == 2:
+                print("** attribute name missing **")
+                return False
+            if len(arg1) == 3:
+                try:
+                    type(eval(arge[2])) != dict
+                except NameError:
+                    print("** value missing **")
+                    return False
+
+        if len(arg1) == 4:
+             obj = objdict["{}.{}".format(argl[0], argl[1])]
+            if argl[2] in obj.__class__.__dict__.keys():
+                valtype = type(obj.__class__.__dict__[argl[2]])
+                obj.__dict__[argl[2]] = valtype(argl[3])
+            else:
+                obj.__dict__[argl[2]] = argl[3]
+        elif type(eval(argl[2])) == dict:
+            obj = objdict["{}.{}".format(argl[0], argl[1])]
+            for k, v in eval(argl[2]).items():
+                if (k in obj.__class__.__dict__.keys() and
+                        type(obj.__class__.__dict__[k]) in {str, int, float}):
+                    valtype = type(obj.__class__.__dict__[k])
+                    obj.__dict__[k] = valtype(v)
+                else:
+                    obj.__dict__[k] = v
+        storage.save()
+
+
+if __name__ == "__main__":
+    HBNBCommand().cmdloop()
