@@ -99,7 +99,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print(eval(arg1[0])().id)
             storage.save()
-        
+
         def do_show(self, arg):
             """
             Display the string of a class instance
@@ -113,10 +113,10 @@ class HBNBCommand(cmd.Cmd):
             elif len(arg1) == 1:
                 print("** instance id missing **")
             elif "{}.{}".format(arg1[0], arg1[1]) not in objdict:
-                print ("** no instance found **")
+                print("** no instance found **")
             else:
                 print(objdict["{}.{}".format(arg1[0], arg1[1])])
-        
+
         def do_destroy(self, arg):
             """
             Delete a class
