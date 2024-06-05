@@ -4,7 +4,7 @@
 import datetime
 import unittest
 import models
-from unittest.mock import MagicMock
+import json
 from models.engine.file_storage import FileStorage
 
 class TestBaseModel(unittest.TestCase):
@@ -20,8 +20,12 @@ class TestBaseModel(unittest.TestCase):
 
         self.b1.save()
 
-        self.assertNotEqual(self.b1.updated_at, dummy_updated_at)
-        self.assertIsInstance(self.b1.updated_at, datetime.datetime)
+        key = "BaseModel" + "." + self.b1.id
+
+        with open('file.json', 'r') as file:
+            self.assertEqual(
+                    json.load(file)[key],
+                    self.b1.to_dict())
 
     def test_to_dict(self):
         self.assertTrue(isinstance(self.b1.to_dict(), dict))
