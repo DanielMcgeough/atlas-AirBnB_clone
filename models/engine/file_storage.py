@@ -11,16 +11,24 @@ from models.base_model import BaseModel
 
 class FileStorage():
 
-    def __init__(self, file_path, objects):
+    def __init__(self):
         """
         Initialize a new FileStorage instance
         Args:
             file_path (string)
             objects (unknown type)
         """
-        self.__file_path = file_path
-        self.__objects = objects
-        self.classes = {"BaseModel": BaseModel}
+        self.__file_path = 'file.json'
+        self.__objects = {}
+        self.__classes = {
+                "Amenity": Amenity,
+                "BaseModel": BaseModel,
+                "City": City,
+                "Place": Place,
+                "Review": Review,
+                "State": State,
+                "User": User
+                }
 
     def all(self):
         """
@@ -55,7 +63,7 @@ class FileStorage():
             with open(self.__file_path, "r") as file:
                 json_instances = json.load(file)
                 for key, obj in json_instances.items():
-                    self.__objects[key] = self.classes[obj["__class__"]](**obj)
+                    self.__objects[key] = self.__classes[obj["__class__"]](**obj)
 
         except FileNotFoundError:
             pass
