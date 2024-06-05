@@ -34,10 +34,10 @@ class TestAmenity_insantiation(unittest.TestCase):
         self.assertEqual(datetime, type(Amenity().updated_at))
 
     def test_name_is_public_class_attribute(self):
-        am = Amenity()
+        self.am = Amenity()
         self.assertEqual(str, type(Amenity.name))
         self.assertIn("name", dir(Amenity()))
-        self.assertNotIn("name", am.__dict__)
+        self.assertNotIn("name", self.am.__dict__)
 
     def test_two_amenities_unique_ids(self):
         am1 = Amenity()
@@ -59,10 +59,10 @@ class TestAmenity_insantiation(unittest.TestCase):
     def test_str_representation(self):
         dt = datetime.today()
         dt_repr = repr(dt)
-        am = Amenity()
-        am.id - "123456"
-        am.created_at = am.updated_at = dt
-        amstr = am.__str__()
+        self.am = Amenity()
+        self.am.id = "123456"
+        self.am.created_at = self.am.updated_at = dt
+        amstr = self.am.__str__()
         self.assertIn("[Amenity] (123456)", amstr)
         self.assertIn("'id': '123456'", amstr)
         self.assertIn("'created_at': " + dt_repr, amstr)
