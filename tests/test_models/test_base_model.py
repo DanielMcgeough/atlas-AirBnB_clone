@@ -27,5 +27,5 @@ class TestBaseModel(unittest.TestCase):
                     json.load(file)[key],
                     self.b1.to_dict())
 
-    def test_to_dict(self):
+    def test_todict(self):
         self.assertTrue(isinstance(self.b1.to_dict(), dict))
