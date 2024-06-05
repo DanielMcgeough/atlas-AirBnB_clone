@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Unittests for models.state
+Unittests for models.city
 """
 
 import os
@@ -8,19 +8,19 @@ import models
 import unittest
 from datetime import datetime
 from time import sleep
-from models.state import State
+from models.city import City
 
 
-class TestState(unittest.TestCase):
+class TestCity(unittest.TestCase):
     """
-    Unittest for instances of State
+    Unittest for instances of City
     """
 
     def setUp(self):
-        self.s1 = State()
+        self.c1 = City()
 
     def tearDown(self):
-        del self.s1
+        del self.c1
 
     def test_bare_minimum_instancing(self):
-        self.assertEqual(State, type(State()))
+        self.assertEqual(City, type(City()))
