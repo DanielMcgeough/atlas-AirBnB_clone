@@ -26,6 +26,7 @@ class BaseModel():
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
+            models.storage.new(self)
 
     def __str__(self):
         """
@@ -40,10 +41,13 @@ class BaseModel():
         """Update updated_at with
         the current datetime."""
         self.updated_at = datetime.datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """Return the dictionary of
         the BaseModel instance."""
-        self.created_at = self.created_at.isoformat()
-        self.updated_at = self.updated_at.isoformat()
-        return self.__dict__
+        dict_copy = self.__dict__.copy()
+        dict_copy['created_at'] = self.created_at.isoformat()
+        dict_copy['updated_at'] = self.updated_at.isoformat()
+        dict_copy['__class__'] = self.__class__.__name__
+        return dict_copy
