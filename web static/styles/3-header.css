@@ -9,6 +9,6 @@ header {
         background-image:'images/logo.png';
         background-size: contain;
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: left 20px;
         vertical-align: middle;
     }
