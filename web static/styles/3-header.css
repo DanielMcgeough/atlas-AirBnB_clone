@@ -4,3 +4,11 @@ header {
     width:100%;
     border-bottom: 1px #CCCCCC;
     }
+
+.logo {
+        background-image:'images/logo.png';
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        vertical-align: middle;
+    }
